@@ -7,11 +7,11 @@ public class Cell extends JButton {
     private static final long serialVersionUID = 1L;
 
     // define colors of buttons
-    public static final Color BG_NOT_REVEALED = Color.GREEN;
+    public static final Color BG_NOT_REVEALED = Color.GRAY;
     public static final Color FG_NOT_REVEALED = Color.RED;
     public static final Color BG_REVEALED = Color.DARK_GRAY;
     public static final Color FG_REVEALED = Color.YELLOW;
-    public static final Font FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20);
+    public static final Font FONT_NUMBERS = new Font ("Dialog", Font.BOLD, 15);
 
     // define variables
     int row, column;
@@ -36,6 +36,15 @@ public class Cell extends JButton {
         super.setText("");
         paint();
     }
+
+//    public void gameOver () {
+//        this.isRevealed = false;
+//        this.isFlagged = false;
+//        this.isMined = isMined;
+//        super.setEnabled(true);
+//        super.setText("");
+//        paint();
+//    }
 
     // paint method
     public void paint() {

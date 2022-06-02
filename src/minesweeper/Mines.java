@@ -1,10 +1,11 @@
 package minesweeper;
 
+import java.util.Collections;
+
 public class Mines {
 
-    // need to create a mines map or generate it automatically
     int numMines;
-    boolean[][] isMined = new boolean[GameBoard.ROWS][GameBoard.COLUMNS];
+    boolean[][] isMined = new boolean [GameBoard.ROWS][GameBoard.COLUMNS];
 
     // constructor
     public Mines() {
@@ -13,6 +14,7 @@ public class Mines {
 
     public void newMines(int numMines) {
         this.numMines = numMines;
+
         // assume numMines=10
         isMined[0][0] = true;
         isMined[5][2] = true;
