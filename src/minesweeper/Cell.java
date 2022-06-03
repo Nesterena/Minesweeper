@@ -28,7 +28,7 @@ public class Cell extends JButton {
     }
 
     // creating a new game
-    public void newGame(boolean isMined) {
+    public void newGame (boolean isMined) {
         this.isRevealed = false;
         this.isFlagged = false;
         this.isMined = isMined;
@@ -36,15 +36,6 @@ public class Cell extends JButton {
         super.setText("");
         paint();
     }
-
-//    public void gameOver () {
-//        this.isRevealed = false;
-//        this.isFlagged = false;
-//        this.isMined = isMined;
-//        super.setEnabled(true);
-//        super.setText("");
-//        paint();
-//    }
 
     // paint method
     public void paint() {

@@ -10,7 +10,7 @@ import java.io.Serial;
 
 public class Main extends Component {
 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         new MainGame();
     }
 
@@ -19,7 +19,7 @@ public class Main extends Component {
         private static final long serialVersionUID = 1L;
 
         // creating "New game" button
-        GameBoard board = new GameBoard();
+        static GameBoard board = new GameBoard();
         JButton btnNewGame = new JButton("New Game");
 
         // creating "End game" button
@@ -27,6 +27,7 @@ public class Main extends Component {
 
         // constructor for buttons "New Game" and "End Game"
         public MainGame() {
+
             Container table = this.getContentPane();
             table.setLayout (new BorderLayout());
 
@@ -54,6 +55,10 @@ public class Main extends Component {
             setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
             setTitle ("Minesweeper");
             setVisible (true);
+        }
+
+        public static GameBoard getBoard() {
+            return board;
         }
     }
 }

@@ -13,19 +13,54 @@ public class GameBoard extends JPanel {
     private static final long serialVersionUID = 1L;
 
     // define named variables for the game properties
-    public static final int ROWS = 10;
-    public static final int COLUMNS = 20;
+    public static int ROWS = 10;
+    public static int COLUMNS = 20;
 
     // define named variables for UI size
     public static final int CELL_SIZE = 50;
     public static final int CANVAS_WIDTH = CELL_SIZE * COLUMNS;
     public static final int CANVAS_HEIGHT = CELL_SIZE * ROWS;
 
+//    public String difficulty;
+
+    public char flag = '⚑';
+    public char mine = '✸';
+
+//    public String getDifficulty() {
+//        return this.difficulty;
+//    }
+
+//    public void setDifficulty (String difficulty) {
+//        this.difficulty = difficulty.toUpperCase();
+//        if (difficulty.equals("BEGINNER")) {
+//            this.ROWS = 10;
+//            this.COLUMNS = 10;
+//            this.numMines = 10;
+//        } else if (difficulty.equals("INTERMEDIATE")) {
+//            this.ROWS = 20;
+//            this.COLUMNS = 20;
+//            this.numMines = 15;
+//        } else if (difficulty.equals("ADVANCED")) {
+//            this.ROWS = 30;
+//            this.COLUMNS = 20;
+//            this.numMines = 30;
+//        } else {
+//            System.out.println("Selected default level");
+//            this.ROWS = 10;
+//            this.COLUMNS = 10;
+//            this.numMines = 10;
+//        }
+//    }
+
+
     // define properties
-    Cell cells [][] = new Cell [ROWS][COLUMNS];
+    Cell[][] cells = new Cell [ROWS][COLUMNS];
     int numMines = 10;
 
     public GameBoard() {
+
+//        setDifficulty(difficulty);
+
         super.setLayout (new GridLayout (ROWS, COLUMNS, 2, 2));
 
         // allocate the 2D array of Cell, and added into content-pane.
@@ -100,6 +135,7 @@ public class GameBoard extends JPanel {
     }
 
     public boolean winGame() {
+
         return true;
     }
 
@@ -109,23 +145,25 @@ public class GameBoard extends JPanel {
             Cell sourceCell = (Cell) e.getSource();
             System.out.println("You clicked on (" + sourceCell.row + "," + sourceCell.column + ")");
 
-            // left-click to reveal a cell, right-click to plant/remove a flag
             if (e.getButton() == MouseEvent.BUTTON1) {
                 // if you hit a mine, game is over
                 if (sourceCell.isMined) {
-                    JOptionPane.showMessageDialog(GameBoard.this, "GAME OVER");
                     System.out.println("Game Over");
-                    sourceCell.setText("*");
+                    sourceCell.setText("✸");
+                    JOptionPane.showMessageDialog(GameBoard.this, "GAME OVER");
+                    Main.MainGame.getBoard().newGame();
                 } else {
                     revealCell(sourceCell.row, sourceCell.column);
                 }
-            } else if (e.getButton() == MouseEvent.BUTTON2) {
-                sourceCell.setText("FL");
-                // ADD A PART ABOUT FLAGS
-
-
+            } else if (e.getButton() == MouseEvent.BUTTON3) {
+                if (sourceCell.isFlagged) {
+                    System.out.println("Flag added");
+                    sourceCell.setText("⚑");
+                }
+                else {
+                    revealCell(sourceCell.row, sourceCell.column);
+                }
             }
-
             // ADD A PART ABOUT WINNING
         }
     }
