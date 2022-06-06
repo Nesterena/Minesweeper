@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.Serial;
+import java.lang.constant.Constable;
 
 public class GameBoard extends JPanel {
     @Serial
@@ -20,38 +21,6 @@ public class GameBoard extends JPanel {
     public static final int CELL_SIZE = 50;
     public static final int CANVAS_WIDTH = CELL_SIZE * COLUMNS;
     public static final int CANVAS_HEIGHT = CELL_SIZE * ROWS;
-
-//    public String difficulty;
-
-    public char flag = '⚑';
-    public char mine = '✸';
-
-//    public String getDifficulty() {
-//        return this.difficulty;
-//    }
-
-//    public void setDifficulty (String difficulty) {
-//        this.difficulty = difficulty.toUpperCase();
-//        if (difficulty.equals("BEGINNER")) {
-//            this.ROWS = 10;
-//            this.COLUMNS = 10;
-//            this.numMines = 10;
-//        } else if (difficulty.equals("INTERMEDIATE")) {
-//            this.ROWS = 20;
-//            this.COLUMNS = 20;
-//            this.numMines = 15;
-//        } else if (difficulty.equals("ADVANCED")) {
-//            this.ROWS = 30;
-//            this.COLUMNS = 20;
-//            this.numMines = 30;
-//        } else {
-//            System.out.println("Selected default level");
-//            this.ROWS = 10;
-//            this.COLUMNS = 10;
-//            this.numMines = 10;
-//        }
-//    }
-
 
     // define properties
     Cell[][] cells = new Cell [ROWS][COLUMNS];
@@ -70,7 +39,6 @@ public class GameBoard extends JPanel {
                 super.add (cells [row][column]);
             }
         }
-
         CellMouseListener listener = new CellMouseListener();
 
         for (int row = 0; row < ROWS; ++row) {
@@ -78,7 +46,6 @@ public class GameBoard extends JPanel {
                 cells [row][column].addMouseListener(listener);
             }
         }
-
         super.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
     }
 
@@ -96,14 +63,6 @@ public class GameBoard extends JPanel {
 
     public void gameOver() {
 
-//        Mines mineMap = new Mines();
-//        mineMap.newMines(numMines);
-//        for (int row = 0; row < ROWS; row++) {
-//            for (int column = 0; column < COLUMNS; column++) {
-//
-//                cells[row][column].endGame (mineMap.isMined[row][column]);
-//            }
-//        }
     }
 
     private int getSurroundingMines (int srcRow, int srcColumn) {
@@ -164,7 +123,6 @@ public class GameBoard extends JPanel {
                     revealCell(sourceCell.row, sourceCell.column);
                 }
             }
-            // ADD A PART ABOUT WINNING
         }
     }
 }
